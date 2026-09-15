@@ -37,14 +37,14 @@
             min-height: 100vh;
         }
 
-        .container { width: 100%; padding: 2rem 5%; display: flex; flex-direction: column; gap: 2rem; }
+        .container { width: 100%; padding: 1.5rem 3%; display: flex; flex-direction: column; gap: 1.5rem; max-width: 1400px; margin: 0 auto; }
 
-        .header-top { display: flex; justify-content: space-between; align-items: center; }
-        .header-top h1 { color: var(--primary); font-size: 1.6rem; }
+        .header-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .header-top h1 { color: var(--primary); font-size: 1.4rem; }
         
         button {
             background-color: var(--primary); color: white; border: none;
-            padding: 0.8rem 1.2rem; border-radius: 6px; cursor: pointer; font-weight: 600;
+            padding: 0.7rem 1.1rem; border-radius: 6px; cursor: pointer; font-weight: 600;
             transition: all 0.2s;
         }
         button:hover { background-color: var(--primary-hover); }
@@ -56,14 +56,14 @@
         /* TOOLBAR */
         .toolbar { 
             display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; background: var(--card-bg); 
-            padding: 1rem 1.5rem; border-radius: 8px;
+            padding: 1rem; border-radius: 8px;
             box-shadow: 0 4px 15px var(--shadow); border: none; gap: 1rem;
         }
         
         input[type="text"], input[type="number"], input[type="date"], select {
-            padding: 0.6rem; border: 1px solid var(--border); border-radius: 6px;
+            padding: 0.7rem; border: 1px solid var(--border); border-radius: 6px;
             background: var(--bg-color); color: var(--text-main); outline: none;
-            width: 100%;
+            width: 100%; font-size: 0.95rem;
         }
         input:focus, select:focus { border-color: var(--primary); }
 
@@ -87,26 +87,26 @@
         .dropdown-item { padding: 0.6rem; text-align: center; font-weight: bold; color: var(--text-main); cursor: pointer; transition: background 0.2s; }
         .dropdown-item:hover { background: var(--border); }
         
-        .top-dashboard { display: grid; grid-template-columns: 350px 1fr; gap: 2rem; }
-        @media (max-width: 1300px) { .top-dashboard { grid-template-columns: 1fr; } }
+        .top-dashboard { display: grid; grid-template-columns: 320px 1fr; gap: 1.5rem; }
+        @media (max-width: 1024px) { .top-dashboard { grid-template-columns: 1fr; } }
 
         .stats-column { display: flex; flex-direction: column; gap: 1rem; }
         
         .card { 
-            background: var(--card-bg); padding: 1.5rem; border-radius: 8px; 
+            background: var(--card-bg); padding: 1.2rem; border-radius: 8px; 
             border: 1px solid var(--border); box-shadow: 0 4px 15px var(--shadow);
             display: flex; flex-direction: column; justify-content: center;
             transition: transform 0.3s;
         }
-        .card:hover { transform: translateX(5px); }
+        .card:hover { transform: translateX(3px); }
         
-        .stat-card-inner { display: flex; align-items: center; gap: 1.2rem; }
+        .stat-card-inner { display: flex; align-items: center; gap: 1rem; }
         .stat-icon {
-            width: 48px; height: 48px; border-radius: 50%; display: flex;
+            width: 44px; height: 44px; border-radius: 50%; display: flex;
             align-items: center; justify-content: center; color: white; flex-shrink: 0;
         }
-        .stat-card-inner h3 { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.5px;}
-        .stat-card-inner p { font-size: 1.6rem; font-weight: bold; }
+        .stat-card-inner h3 { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.2rem; text-transform: uppercase; letter-spacing: 0.5px;}
+        .stat-card-inner p { font-size: 1.4rem; font-weight: bold; }
         .val-income-text { color: var(--income); } 
         .val-expense-text { color: var(--expense); }
         .val-pending-text { color: var(--pending); }
@@ -115,86 +115,100 @@
         @media (max-width: 900px) { .charts-column { grid-template-columns: 1fr; } }
 
         .chart-card {
-            background: var(--card-bg); border-radius: 8px; padding: 2rem 1.5rem;
+            background: var(--card-bg); border-radius: 8px; padding: 1.5rem 1rem;
             border: 1px solid var(--border); box-shadow: 0 4px 15px var(--shadow);
             display: flex; flex-direction: column; align-items: center; justify-content: space-between; width: 100%;
         }
-        .chart-title { margin-bottom: 1.5rem; color: var(--text-muted); font-size: 1.1rem; text-align: center; width: 100%; }
+        .chart-title { margin-bottom: 1rem; color: var(--text-muted); font-size: 1rem; text-align: center; width: 100%; }
 
         .bar-chart-container {
-            display: flex; align-items: flex-end; justify-content: center; gap: 4rem;
-            height: 240px; width: 100%; padding-bottom: 25px; border-bottom: 2px solid var(--border);
+            display: flex; align-items: flex-end; justify-content: center; gap: 3rem;
+            height: 220px; width: 100%; padding-bottom: 25px; border-bottom: 2px solid var(--border);
             position: relative;
         }
-        .bar-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; width: 80px; }
+        .bar-wrapper { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; width: 70px; }
         .bar { width: 100%; border-radius: 6px 6px 0 0; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; }
-        .bar:hover { transform: scaleX(1.1) scaleY(1.03) translateY(-2px); filter: brightness(1.1); box-shadow: 0 0 15px rgba(0,0,0,0.2); }
-        .bar-label { position: absolute; bottom: -25px; font-size: 0.85rem; font-weight: 600; color: var(--text-muted); width: 100%; text-align: center; }
+        .bar:hover { transform: scaleX(1.05) scaleY(1.02) translateY(-2px); filter: brightness(1.1); box-shadow: 0 0 15px rgba(0,0,0,0.2); }
+        .bar-label { position: absolute; bottom: -25px; font-size: 0.8rem; font-weight: 600; color: var(--text-muted); width: 100%; text-align: center; }
 
         .pie-slice { transition: all 0.3s ease; cursor: pointer; transform-origin: center; }
         .pie-slice:hover { stroke-width: 8; filter: brightness(1.1); transform: scale(1.03); }
 
         #customTooltip {
             position: fixed; top: 0; left: 0; background: var(--text-main); color: var(--bg-color);
-            padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.9rem; font-weight: 600;
+            padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem; font-weight: 600;
             pointer-events: none; opacity: 0; z-index: 9999; transform: translate(-50%, -150%);
             transition: opacity 0.2s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.2); white-space: nowrap;
         }
 
-        .main-panel { display: grid; grid-template-columns: 350px 1fr; gap: 2rem; align-items: start; }
+        .main-panel { display: grid; grid-template-columns: 320px 1fr; gap: 1.5rem; align-items: start; }
         @media (max-width: 1024px) { .main-panel { grid-template-columns: 1fr; } }
 
         .side-panel, .list-panel {
-            background: var(--card-bg); padding: 1.5rem; border-radius: 8px;
-            border: 1px solid var(--border); box-shadow: 0 4px 15px var(--shadow); overflow-x: auto;
+            background: var(--card-bg); padding: 1.2rem; border-radius: 8px;
+            border: 1px solid var(--border); box-shadow: 0 4px 15px var(--shadow);
+            overflow-x: hidden;
         }
 
-        .section-title { font-size: 1.1rem; color: var(--primary); margin-bottom: 1rem; font-weight: 600; }
+        .section-title { font-size: 1.05rem; color: var(--primary); margin-bottom: 1rem; font-weight: 600; }
         
         .budget-bar-container { width: 100%; height: 12px; background: var(--border); border-radius: 6px; overflow: hidden; margin: 0.5rem 0;}
         .budget-bar { height: 100%; width: 0%; transition: width 0.5s ease-out, background-color 0.5s ease; background-color: var(--income); }
 
-        .form-group { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem; }
-        .form-row { display: flex; gap: 0.8rem; }
-        .form-row > * { flex: 1; }
-        .checkbox-container { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.5rem; background: var(--bg-color); border-radius: 6px; border: 1px solid var(--border); }
+        .form-group { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1.5rem; }
+        .form-row { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+        .form-row > * { flex: 1; min-width: 120px; }
+        .checkbox-container { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.6rem; background: var(--bg-color); border-radius: 6px; border: 1px solid var(--border); }
         .checkbox-container input { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer;}
 
-        .table-tabs-container { display: flex; justify-content: center; width: 100%; margin-bottom: 1.5rem; }
-        .table-tabs { display: inline-flex; background: var(--bg-color); border: 1px solid var(--border); border-radius: 50px; padding: 4px; gap: 4px; }
-        .table-tab { background: transparent; border: none; padding: 0.5rem 1.2rem; font-weight: 600; color: var(--text-muted); cursor: pointer; border-radius: 40px; transition: all 0.3s ease; font-size: 0.85rem; }
+        .table-tabs-container { display: flex; justify-content: center; width: 100%; margin-bottom: 1.2rem; }
+        .table-tabs { display: inline-flex; background: var(--bg-color); border: 1px solid var(--border); border-radius: 50px; padding: 3px; gap: 3px; }
+        .table-tab { background: transparent; border: none; padding: 0.4rem 1rem; font-weight: 600; color: var(--text-muted); cursor: pointer; border-radius: 40px; transition: all 0.3s ease; font-size: 0.8rem; }
         .table-tab:hover { color: var(--text-main); }
         .table-tab.active { background: linear-gradient(135deg, #3b82f6 0%, #ec4899 100%); color: white; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); }
 
-        .transaction-grid-layout { display: grid; grid-template-columns: 2fr 1.2fr 1fr 1fr 1fr auto; align-items: center; gap: 1rem; min-width: 750px; }
-        .table-header { padding: 0.5rem 1.25rem 1rem 1.25rem; color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
+        /* TABELA E PÍLULAS RESPONSIVAS */
+        .table-container { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .transaction-grid-layout { display: grid; grid-template-columns: 2fr 1.2fr 1fr 1fr 1fr auto; align-items: center; gap: 0.8rem; min-width: 700px; }
+        .table-header { padding: 0.5rem 1rem 0.8rem 1rem; color: var(--text-muted); font-size: 0.7rem; text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
         .col-status { text-align: center; display: flex; justify-content: center; }
 
         .transaction-pill {
-            background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
-            padding: 1rem 1.25rem; box-shadow: 0 2px 8px var(--shadow); transition: all 0.25s ease; margin-bottom: 0.8rem;
+            background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px;
+            padding: 0.9rem 1rem; box-shadow: 0 2px 8px var(--shadow); transition: all 0.25s ease; margin-bottom: 0.7rem;
         }
-        .transaction-pill:hover { transform: translateY(-2px); border-color: var(--primary); box-shadow: 0 6px 20px var(--shadow); background: var(--bg-color); }
+        .transaction-pill:hover { transform: translateY(-1px); border-color: var(--primary); box-shadow: 0 4px 15px var(--shadow); background: var(--bg-color); }
         
-        .t-cat { font-size: 0.75rem; color: #FFFFFF; padding: 0.4rem 0.8rem; border-radius: 6px; display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 600; letter-spacing: 0.5px; }
-        .t-cat svg { width: 14px; height: 14px; }
+        .t-cat { font-size: 0.7rem; color: #FFFFFF; padding: 0.3rem 0.6rem; border-radius: 6px; display: inline-flex; align-items: center; gap: 0.3rem; font-weight: 600; letter-spacing: 0.3px; }
+        .t-cat svg { width: 12px; height: 12px; }
 
-        .status-badge { border: none; padding: 0.3rem 0.8rem; border-radius: 12px; font-size: 0.75rem; font-weight: bold; cursor: pointer; transition: 0.2s; }
-        .status-badge:hover { filter: brightness(0.9); transform: scale(1.05); }
+        .status-badge { border: none; padding: 0.3rem 0.7rem; border-radius: 12px; font-size: 0.7rem; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .status-badge:hover { filter: brightness(0.9); transform: scale(1.03); }
         .is-paid { background: #dcfce7; color: #166534; } 
         .is-pending { background: #fef9c3; color: #854d0e; } 
         body.dark-theme .is-paid { background: rgba(5, 150, 105, 0.2); color: #34d399; }
         body.dark-theme .is-pending { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
 
-        .action-btns { display: flex; gap: 0.4rem; justify-content: flex-end; }
-        .btn-icon { background: none; border: 1px solid var(--border); border-radius: 4px; padding: 0.4rem; cursor: pointer; font-size: 0.9rem; transition: 0.2s; display: flex; align-items: center; justify-content: center; color: var(--text-muted); }
+        .action-btns { display: flex; gap: 0.3rem; justify-content: flex-end; }
+        .btn-icon { background: none; border: 1px solid var(--border); border-radius: 4px; padding: 0.35rem; cursor: pointer; font-size: 0.85rem; transition: 0.2s; display: flex; align-items: center; justify-content: center; color: var(--text-muted); }
         .btn-icon:hover { background: var(--bg-color); color: var(--primary); }
         .btn-icon.del-btn { color: var(--expense); }
         .btn-icon.del-btn:hover { background: #fee2e2; border-color: #fca5a5; }
 
         select, select option { text-align: center !important; text-align-last: center !important; }
         
-        #cloudStatus { font-size: 0.75rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.3rem; }
+        #cloudStatus { font-size: 0.7rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.3rem; }
+
+        /* Ajustes Mobile Específicos */
+        @media (max-width: 600px) {
+            .container { padding: 0.8rem 2%; gap: 1rem; }
+            .header-top h1 { font-size: 1.2rem; }
+            .toolbar { flex-direction: column; align-items: stretch; gap: 0.8rem; }
+            .toolbar > div { width: 100%; justify-content: space-between; }
+            .custom-dropdown { flex: 1; }
+            .stat-card-inner p { font-size: 1.2rem; }
+            .chart-card { padding: 1rem 0.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -203,31 +217,31 @@
 
     <div class="container">
         <div class="header-top">
-            <div style="display: flex; align-items: center; gap: 1rem;">
-                <h1>Meu Controle Financeiro</h1>
-                <span id="cloudStatus">☁️ Conectando à nuvem...</span>
+            <div style="display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;">
+                <h1>Controle Financeiro</h1>
+                <span id="cloudStatus">☁️ Conectando...</span>
             </div>
-            <button class="btn-outline" onclick="toggleDarkMode()">🌓 Alternar Tema</button>
+            <button class="btn-outline" onclick="toggleDarkMode()" style="padding: 0.5rem 0.9rem; font-size: 0.85rem;">🌓 Tema</button>
         </div>
 
         <!-- TOOLBAR -->
         <div class="toolbar">
-            <div style="display: flex; align-items: center; gap: 0.8rem;">
-                <label style="font-weight: 700; color: var(--text-main); font-size: 0.9rem;">Período:</label>
-                <div class="custom-dropdown" id="monthDropdown" style="width: 140px;">
-                    <div class="dropdown-trigger" id="monthTrigger">Setembro</div>
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <label style="font-weight: 700; color: var(--text-main); font-size: 0.85rem;">Período:</label>
+                <div class="custom-dropdown" id="monthDropdown" style="width: 130px;">
+                    <div class="dropdown-trigger" id="monthTrigger" style="font-size: 0.85rem; padding: 0.5rem;">Setembro</div>
                     <div class="dropdown-menu" id="monthMenu"></div>
                 </div>
-                <div class="custom-dropdown" id="yearDropdown" style="width: 95px;">
-                    <div class="dropdown-trigger" id="yearTrigger">2026</div>
+                <div class="custom-dropdown" id="yearDropdown" style="width: 85px;">
+                    <div class="dropdown-trigger" id="yearTrigger" style="font-size: 0.85rem; padding: 0.5rem;">2026</div>
                     <div class="dropdown-menu" id="yearMenu"></div>
                 </div>
             </div>
 
-            <div style="display: flex; gap: 0.5rem;">
+            <div style="display: flex; gap: 0.4rem;">
                 <input type="file" id="importFile" accept=".json" style="display: none;" onchange="importData(event)">
-                <button class="btn-outline" onclick="document.getElementById('importFile').click()">📥 Importar</button>
-                <button class="btn-outline" style="background: var(--primary); color: white; border-color: var(--primary);" onclick="exportData()">📤 Exportar</button>
+                <button class="btn-outline" onclick="document.getElementById('importFile').click()" style="padding: 0.5rem 0.8rem; font-size: 0.85rem;">📥 Importar</button>
+                <button class="btn-outline" style="background: var(--primary); color: white; border-color: var(--primary); padding: 0.5rem 0.8rem; font-size: 0.85rem;" onclick="exportData()">📤 Exportar</button>
             </div>
         </div>
 
@@ -236,7 +250,7 @@
                 <div class="card" style="border-left: 4px solid var(--income);">
                     <div class="stat-card-inner">
                         <div class="stat-icon" style="background: var(--income);">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
                         </div>
                         <div>
                             <h3>Total de Receitas</h3>
@@ -247,7 +261,7 @@
                 <div class="card" style="border-left: 4px solid var(--expense);">
                     <div class="stat-card-inner">
                         <div class="stat-icon" style="background: var(--expense);">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
                         </div>
                         <div>
                             <h3>Total de Despesas</h3>
@@ -258,7 +272,7 @@
                 <div class="card" style="border-left: 4px solid var(--pending);">
                     <div class="stat-card-inner">
                         <div class="stat-icon" style="background: var(--pending);">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                         </div>
                         <div>
                             <h3>Contas Pendentes</h3>
@@ -269,7 +283,7 @@
                 <div class="card" style="border-left: 4px solid var(--primary);">
                     <div class="stat-card-inner">
                         <div class="stat-icon" style="background: var(--primary);">
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"></path><path d="M4 6v12c0 1.1.9 2 2 2h14v-4H10v-4h10v-4"></path></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"></path><path d="M4 6v12c0 1.1.9 2 2 2h14v-4H10v-4h10v-4"></path></svg>
                         </div>
                         <div>
                             <h3>Saldo Líquido</h3>
@@ -287,7 +301,7 @@
                 </div>
                 <div class="chart-card">
                     <h3 class="chart-title">Despesas por Categoria</h3>
-                    <div id="pieChart" style="display: flex; gap: 1.5rem; align-items: center; justify-content: space-around; width: 100%; height: 240px;"></div>
+                    <div id="pieChart" style="display: flex; gap: 1rem; align-items: center; justify-content: space-around; width: 100%; height: 220px; flex-wrap: wrap;"></div>
                 </div>
             </div>
         </div>
@@ -309,12 +323,12 @@
                     
                     <label class="checkbox-container">
                         <input type="checkbox" id="isPaid" checked>
-                        <span style="font-weight: 600; color: var(--text-muted); font-size: 0.9rem;">Já foi efetuado/pago?</span>
+                        <span style="font-weight: 600; color: var(--text-muted); font-size: 0.85rem;">Já foi efetuado/pago?</span>
                     </label>
 
                     <label class="checkbox-container" id="recurringContainer">
                         <input type="checkbox" id="isRecurring" onchange="toggleRecurring()">
-                        <span style="font-weight: 600; color: var(--text-muted); font-size: 0.9rem;">Compra Parcelada / Recorrente?</span>
+                        <span style="font-weight: 600; color: var(--text-muted); font-size: 0.85rem;">Compra Parcelada / Recorrente?</span>
                     </label>
 
                     <div class="form-row" id="recurringConfig" style="display: none; align-items: center; margin-top: 0.2rem;">
@@ -324,7 +338,7 @@
                     <button type="submit" id="submitBtn" style="width: 100%; margin-top: 0.5rem;">Adicionar Lançamento</button>
                 </form>
 
-                <h2 class="section-title" style="margin-top: 2rem;">Orçamento Mensal</h2>
+                <h2 class="section-title" style="margin-top: 1.5rem;">Orçamento Mensal</h2>
                 <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
                     <input type="number" id="budgetLimit" placeholder="Limite (R$)" onchange="saveBudget()" style="flex: 1;">
                 </div>
@@ -332,17 +346,17 @@
                 <small id="budgetText" style="color: var(--text-muted); display: block; text-align: right;"></small>
             </div>
 
-            <div class="list-panel" style="overflow-x: auto;">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
-                    <div style="display: flex; align-items: center; gap: 1rem;">
+            <div class="list-panel">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 1.2rem;">
+                    <div style="display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;">
                         <h2 class="section-title" style="margin-bottom: 0;">Extrato</h2>
-                        <div style="display: flex; align-items: center; gap: 0.4rem; background: var(--bg-color); padding: 0.2rem 0.5rem; border-radius: 6px; border: 1px solid var(--border);">
-                            <button class="btn-outline" style="padding: 0.2rem 0.5rem; border: none; font-size: 0.8rem;" onclick="changeMonth(-1)" title="Mês anterior">◀</button>
-                            <span id="statementMonthDisplay" style="font-weight: 700; font-size: 0.85rem; min-width: 110px; text-align: center; color: var(--text-main);">Setembro 2026</span>
-                            <button class="btn-outline" style="padding: 0.2rem 0.5rem; border: none; font-size: 0.8rem;" onclick="changeMonth(1)" title="Próximo mês">▶</button>
+                        <div style="display: flex; align-items: center; gap: 0.3rem; background: var(--bg-color); padding: 0.2rem 0.4rem; border-radius: 6px; border: 1px solid var(--border);">
+                            <button class="btn-outline" style="padding: 0.2rem 0.4rem; border: none; font-size: 0.75rem;" onclick="changeMonth(-1)" title="Mês anterior">◀</button>
+                            <span id="statementMonthDisplay" style="font-weight: 700; font-size: 0.8rem; min-width: 100px; text-align: center; color: var(--text-main);">Setembro 2026</span>
+                            <button class="btn-outline" style="padding: 0.2rem 0.4rem; border: none; font-size: 0.75rem;" onclick="changeMonth(1)" title="Próximo mês">▶</button>
                         </div>
                     </div>
-                    <button class="btn-outline" style="color: var(--expense); border-color: #fca5a5; padding: 0.4rem 0.8rem; font-size: 0.85rem;" onclick="deleteAllCurrentMonth()">🗑️ Apagar Mês Atual</button>
+                    <button class="btn-outline" style="color: var(--expense); border-color: #fca5a5; padding: 0.35rem 0.7rem; font-size: 0.8rem;" onclick="deleteAllCurrentMonth()">🗑️ Apagar Mês</button>
                 </div>
                 
                 <div class="table-tabs-container">
@@ -353,16 +367,18 @@
                     </div>
                 </div>
 
-                <div class="transaction-grid-layout table-header">
-                    <div>Descrição</div>
-                    <div>Categoria</div>
-                    <div>Data</div>
-                    <div>Valor</div>
-                    <div class="col-status">Status</div>
-                    <div style="text-align: right;">Ações</div>
-                </div>
+                <div class="table-container">
+                    <div class="transaction-grid-layout table-header">
+                        <div>Descrição</div>
+                        <div>Categoria</div>
+                        <div>Data</div>
+                        <div>Valor</div>
+                        <div class="col-status">Status</div>
+                        <div style="text-align: right;">Ações</div>
+                    </div>
 
-                <div id="list"></div>
+                    <div id="list"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -401,13 +417,13 @@
         };
         
         const catIcons = {
-            'Alimentação': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>',
-            'Transporte': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="12" width="18" height="8" rx="2"/><path d="M5.5 12 7 5h10l1.5 7"/><circle cx="7.5" cy="16.5" r="1.5"/><circle cx="16.5" cy="16.5" r="1.5"/></svg>',
-            'Moradia': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
-            'Lazer': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>',
-            'Saúde': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>',
-            'Salário': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
-            'Outros': '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>'
+            'Alimentação': '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>',
+            'Transporte': '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="12" width="18" height="8" rx="2"/><path d="M5.5 12 7 5h10l1.5 7"/><circle cx="7.5" cy="16.5" r="1.5"/><circle cx="16.5" cy="16.5" r="1.5"/></svg>',
+            'Moradia': '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+            'Lazer': '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>',
+            'Saúde': '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>',
+            'Salário': '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+            'Outros': '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>'
         };
 
         const form = document.getElementById('form');
@@ -450,12 +466,12 @@
                 }
 
                 document.getElementById('budgetLimit').value = budget > 0 ? budget : '';
-                updateCategories(); // Atualiza as categorias após carregar da nuvem
+                updateCategories();
                 updateUI();
-                cloudStatus.innerText = "☁️ Sincronizado com a Nuvem";
+                cloudStatus.innerText = "☁️ Sincronizado";
             } catch (error) {
                 console.error("Erro ao carregar do Firebase:", error);
-                cloudStatus.innerText = "⚠️ Erro de conexão com a Nuvem";
+                cloudStatus.innerText = "⚠️ Erro na Nuvem";
             }
         }
 
@@ -469,10 +485,10 @@
                     catLists,
                     updatedAt: new Date().toISOString()
                 });
-                cloudStatus.innerText = "☁️ Sincronizado com a Nuvem";
+                cloudStatus.innerText = "☁️ Sincronizado";
             } catch (error) {
                 console.error("Erro ao salvar no Firebase:", error);
-                cloudStatus.innerText = "⚠️ Erro ao salvar na Nuvem";
+                cloudStatus.innerText = "⚠️ Erro ao salvar";
             }
         }
 
@@ -529,15 +545,15 @@
             const statementDisplay = document.getElementById('statementMonthDisplay');
 
             if(selectedMonth === 'all') {
-                monthTrigger.innerText = 'Todos os Meses';
-                if(statementDisplay) statementDisplay.innerText = selectedYear === 'all' ? 'Geral (Todos)' : `Todos (${selectedYear})`;
+                monthTrigger.innerText = 'Todos Meses';
+                if(statementDisplay) statementDisplay.innerText = selectedYear === 'all' ? 'Geral' : `Todos (${selectedYear})`;
             } else {
                 const mName = months[parseInt(selectedMonth)];
                 monthTrigger.innerText = mName;
-                if(statementDisplay) statementDisplay.innerText = selectedYear === 'all' ? `${mName} (Todos)` : `${mName} ${selectedYear}`;
+                if(statementDisplay) statementDisplay.innerText = selectedYear === 'all' ? `${mName}` : `${mName} ${selectedYear}`;
             }
 
-            yearTrigger.innerText = selectedYear === 'all' ? 'Todos os Anos' : selectedYear;
+            yearTrigger.innerText = selectedYear === 'all' ? 'Todos Anos' : selectedYear;
         }
 
         window.changeMonth = function(direction) {
@@ -567,7 +583,7 @@
             
             const type = typeSelect.value;
             const options = catLists[type] || [];
-            catSelect.innerHTML = options.map(c => `<option value="${c}">${c}</option>`).join('') + '<option value="new_cat" style="font-weight: bold; color: var(--primary);">+ Adicionar nova...</option>';
+            catSelect.innerHTML = options.map(c => `<option value="${c}">${c}</option>`).join('') + '<option value="new_cat" style="font-weight: bold; color: var(--primary);">+ Adicionar...</option>';
         }
 
         document.getElementById('category').addEventListener('change', function() {
@@ -628,14 +644,14 @@
 
             container.innerHTML = `
                 <div class="bar-wrapper">
-                    <span style="font-weight: 700; font-size: 0.85rem; color: var(--income); margin-bottom: 8px; text-align: center; width: 100%;">${formatMoney(income)}</span>
+                    <span style="font-weight: 700; font-size: 0.75rem; color: var(--income); margin-bottom: 6px; text-align: center; width: 100%;">${formatMoney(income)}</span>
                     <div class="bar" style="height: ${Math.max(incHeight, 4)}%; background: var(--income);" 
                          onmousemove="showTooltip(event, 'Receitas: ${formatMoney(income)}')" onmouseout="hideTooltip()">
                         <span class="bar-label">Receitas</span>
                     </div>
                 </div>
                 <div class="bar-wrapper">
-                    <span style="font-weight: 700; font-size: 0.85rem; color: var(--expense); margin-bottom: 8px; text-align: center; width: 100%;">${formatMoney(expense)}</span>
+                    <span style="font-weight: 700; font-size: 0.75rem; color: var(--expense); margin-bottom: 6px; text-align: center; width: 100%;">${formatMoney(expense)}</span>
                     <div class="bar" style="height: ${Math.max(expHeight, 4)}%; background: var(--expense);" 
                          onmousemove="showTooltip(event, 'Despesas: ${formatMoney(expense)}')" onmouseout="hideTooltip()">
                         <span class="bar-label">Despesas</span>
@@ -649,7 +665,7 @@
             const expenses = filteredTransactions.filter(t => t.type === 'expense');
             
             if(expenses.length === 0) {
-                container.innerHTML = '<p style="color:var(--text-muted); font-size:0.9rem; text-align:center; width:100%;">Sem dados para exibir</p>';
+                container.innerHTML = '<p style="color:var(--text-muted); font-size:0.85rem; text-align:center; width:100%;">Sem dados para exibir</p>';
                 return;
             }
 
@@ -658,9 +674,9 @@
             expenses.forEach(t => { totals[t.category] = (totals[t.category] || 0) + t.amount; totalExp += t.amount; });
 
             const radius = 15.91549430918954; 
-            let svgHTML = `<svg viewBox="0 0 32 32" style="width: 190px; height: 190px; border-radius: 50%; transform: rotate(-90deg); overflow: visible;">`;
+            let svgHTML = `<svg viewBox="0 0 32 32" style="width: 150px; height: 150px; border-radius: 50%; transform: rotate(-90deg); overflow: visible;">`;
             let offset = 0;
-            let legendHTML = '<div style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem; justify-content: center;">';
+            let legendHTML = '<div style="display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.8rem; justify-content: center;">';
 
             for(let cat in totals) {
                 const val = totals[cat];
@@ -672,12 +688,12 @@
                 offset += pct;
 
                 legendHTML += `
-                    <div style="display: flex; align-items: center; justify-content: space-between; width: 145px;" onmousemove="showTooltip(event, '${tooltipText}')" onmouseout="hideTooltip()">
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <div style="width: 12px; height: 12px; border-radius: 50%; background: ${color}"></div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; width: 130px;" onmousemove="showTooltip(event, '${tooltipText}')" onmouseout="hideTooltip()">
+                        <div style="display: flex; align-items: center; gap: 0.4rem;">
+                            <div style="width: 10px; height: 10px; border-radius: 50%; background: ${color}"></div>
                             <span style="color: var(--text-muted); font-weight:500;">${cat}</span>
                         </div>
-                        <span style="font-weight:600; color:var(--text-main); font-size: 0.8rem;">${pct.toFixed(1)}%</span>
+                        <span style="font-weight:600; color:var(--text-main); font-size: 0.75rem;">${pct.toFixed(1)}%</span>
                     </div>
                 `;
             }
@@ -686,12 +702,12 @@
 
             let centerTotal = `
                 <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; pointer-events: none;">
-                    <strong style="display: block; font-size: 1rem; color: var(--text-main);">${formatMoney(totalExp)}</strong>
-                    <span style="font-size: 0.7rem; color: var(--text-muted);">Total</span>
+                    <strong style="display: block; font-size: 0.85rem; color: var(--text-main);">${formatMoney(totalExp)}</strong>
+                    <span style="font-size: 0.65rem; color: var(--text-muted);">Total</span>
                 </div>
             `;
 
-            container.innerHTML = `<div style="position: relative; width: 190px; height: 190px; flex-shrink: 0;">${svgHTML}${centerTotal}</div>` + legendHTML;
+            container.innerHTML = `<div style="position: relative; width: 150px; height: 150px; flex-shrink: 0;">${svgHTML}${centerTotal}</div>` + legendHTML;
         }
 
         function getFilteredTransactions() {
@@ -716,7 +732,7 @@
             if(currentTabFilter !== 'all') { displayItems = items.filter(t => t.type === currentTabFilter); }
 
             if(displayItems.length === 0) {
-                list.innerHTML = '<div style="text-align:center; padding: 2rem; color:var(--text-muted);">Nenhuma transação encontrada nesta categoria.</div>';
+                list.innerHTML = '<div style="text-align:center; padding: 2rem; color:var(--text-muted); font-size: 0.9rem;">Nenhuma transação encontrada.</div>';
                 return;
             }
 
@@ -733,17 +749,14 @@
                 const pill = document.createElement('div');
                 pill.className = 'transaction-pill transaction-grid-layout';
                 pill.innerHTML = `
-                    <div style="font-weight: 600; color: var(--text-main); font-size: 0.95rem;">${t.desc}</div>
+                    <div style="font-weight: 600; color: var(--text-main); font-size: 0.9rem; word-break: break-word;">${t.desc}</div>
                     <div><span class="t-cat" style="background: ${bgColor};">${icon} ${t.category}</span></div>
-                    <div style="color: var(--text-muted); font-size: 0.85rem; display: flex; align-items: center; gap: 4px;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                        ${day}/${month}/${year}
-                    </div>
-                    <div style="font-weight: 700; font-size: 1rem; color: ${isInc ? 'var(--income)' : 'var(--expense)'};">${isInc ? '+' : '-'} ${formatMoney(t.amount)}</div>
-                    <div class="col-status"><button class="status-badge ${btnClass}" onclick="toggleStatus(${t.id})" title="Clique para alternar status">${btnText}</button></div>
+                    <div style="color: var(--text-muted); font-size: 0.8rem; display: flex; align-items: center; gap: 4px;">${day}/${month}/${year}</div>
+                    <div style="font-weight: 700; font-size: 0.9rem; color: ${isInc ? 'var(--income)' : 'var(--expense)'};">${isInc ? '+' : '-'} ${formatMoney(t.amount)}</div>
+                    <div class="col-status"><button class="status-badge ${btnClass}" onclick="toggleStatus(${t.id})" title="Alternar status">${btnText}</button></div>
                     <div class="action-btns">
-                        <button class="btn-icon" onclick="editItem(${t.id})" title="Editar"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button>
-                        <button class="btn-icon del-btn" onclick="deleteItem(${t.id})" title="Excluir"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
+                        <button class="btn-icon" onclick="editItem(${t.id})" title="Editar"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg></button>
+                        <button class="btn-icon del-btn" onclick="deleteItem(${t.id})" title="Excluir"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></button>
                     </div>
                 `;
                 list.appendChild(pill);
@@ -887,7 +900,7 @@
 
         document.getElementById('date').valueAsDate = new Date();
         initCustomFilters(); 
-        initTypeSelect(); // <-- Inicializa os seletores imediatamente na abertura da página
+        initTypeSelect(); 
         
         loadFromCloud();
     </script>
