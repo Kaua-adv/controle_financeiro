@@ -372,7 +372,6 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // Configurações do Firebase integradas
         const firebaseConfig = {
             apiKey: "AIzaSyACaEFQgouOjVj7wToNmOadWvZ3FJWZVBg",
             authDomain: "controle-financerio.firebaseapp.com",
@@ -382,7 +381,6 @@
             appId: "1:848859967690:web:67df4e3ccab3a89f794433"
         };
 
-        // Inicializar Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
@@ -452,7 +450,7 @@
                 }
 
                 document.getElementById('budgetLimit').value = budget > 0 ? budget : '';
-                initTypeSelect();
+                updateCategories(); // Atualiza as categorias após carregar da nuvem
                 updateUI();
                 cloudStatus.innerText = "☁️ Sincronizado com a Nuvem";
             } catch (error) {
@@ -889,6 +887,7 @@
 
         document.getElementById('date').valueAsDate = new Date();
         initCustomFilters(); 
+        initTypeSelect(); // <-- Inicializa os seletores imediatamente na abertura da página
         
         loadFromCloud();
     </script>
