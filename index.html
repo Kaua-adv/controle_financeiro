@@ -212,13 +212,40 @@ const predefinedCategoryIcons={
 };
 const categoryIconFor=name=>predefinedCategoryIcons[name]||'🏷️';
 function normalize(d){d.categoryBudgets=d.categoryBudgets||{};if(d.catLists&&!d.categories){d.categories=[];let i=0,colors=['#38bdf8','#818cf8','#a855f7','#f472b6','#fb923c','#94a3b8','#0ea5e9','#14b8a6'];Object.entries(d.catLists).forEach(([type,names])=>names.forEach(n=>d.categories.push({id:uid(),name:n,type,color:colors[i++%colors.length],icon:categoryIconFor(n)})))}const cats=d.categories||state.categories;d.transactions=(d.transactions||[]).map(t=>({...t,id:String(t.id??uid()),categoryId:t.categoryId||findCat(t.category,t.type,cats),accountId:t.accountId||'a1',paymentMethod:t.paymentMethod||'Pix',status:t.status||(t.isPaid===false?'pending':'paid'),dueDate:t.dueDate||'',paidDate:t.paidDate||(t.isPaid===false?'':t.date),repeatType:t.repeatType||'none'}));return d}
-async function load(){try{$('cloudStatus').textContent='☁️ Sincronizando...';const s=await getDoc(doc(db,'financas_data','usuario_principal'));if(s.exists()){
-state={...state,...normalize(s.data())};
-state.categories=(state.categories||[]).map(c=>({
-...c,
-icon:predefinedCategoryIcons[c.name]||c.icon||'🏷️'
-}));
-}else await save();if(!state.accounts?.length)state.accounts=[{id:'a1',name:'Conta principal',type:'Conta corrente',initialBalance:0}];$('cloudStatus').textContent='☁️ Sincronizado';refresh()}catch(e){console.error(e);$('cloudStatus').textContent='⚠️ Erro na nuvem'}}async function save(){try{$('cloudStatus').textContent='☁️ Salvando...';await setDoc(doc(db,'financas_data','usuario_principal'),{...state,updatedAt:new Date().toISOString()});$('cloudStatus').textContent='☁️ Sincronizado'}catch(e){console.error(e);$('cloudStatus').textContent='⚠️ Erro ao salvar'}}
+async function load(){
+  try{
+    $('cloudStatus').textContent='☁️ Sincronizando...';
+
+    const s=await getDoc(doc(db,'financas_data','usuario_principal'));
+
+    if(s.exists()){
+      state={...state,...normalize(s.data())};
+      state.categories=(state.categories||[]).map(c=>({
+        ...c,
+        icon:predefinedCategoryIcons[c.name]||c.icon||'🏷️'
+      }));
+    }else{
+      await save();
+    }
+
+    if(!state.accounts?.length){
+      state.accounts=[{id:'a1',name:'Conta principal',type:'Conta corrente',initialBalance:0}];
+    }
+
+    $('cloudStatus').textContent='☁️ Sincronizado';
+  }catch(e){
+    console.error('Erro de sincronização com Firebase:',e);
+    $('cloudStatus').textContent='⚠️ Erro na nuvem';
+    return;
+  }
+
+  try{
+    refresh();
+  }catch(e){
+    console.error('Erro ao atualizar a interface:',e);
+    $('cloudStatus').textContent='⚠️ Erro na interface';
+  }
+}async function save(){try{$('cloudStatus').textContent='☁️ Salvando...';await setDoc(doc(db,'financas_data','usuario_principal'),{...state,updatedAt:new Date().toISOString()});$('cloudStatus').textContent='☁️ Sincronizado'}catch(e){console.error(e);$('cloudStatus').textContent='⚠️ Erro ao salvar'}}
 function initPeriod(){$('monthSelect').innerHTML=months.map((m,i)=>`<option value="${i}">${m}</option>`).join('');let ys=[];for(let y=new Date().getFullYear()-3;y<=new Date().getFullYear()+10;y++)ys.push(y);$('yearSelect').innerHTML=ys.map(y=>`<option>${y}</option>`).join('');$('monthSelect').value=selectedMonth;$('yearSelect').value=selectedYear;$('monthSelect').onchange=()=>{selectedMonth=+$('monthSelect').value;refresh()};$('yearSelect').onchange=()=>{selectedYear=+$('yearSelect').value;refresh()}}
 function navigateHomeMonth(direction){selectedMonth+=direction;if(selectedMonth>11){selectedMonth=0;selectedYear++}else if(selectedMonth<0){selectedMonth=11;selectedYear--}let ys=$('yearSelect');if(![...ys.options].some(o=>Number(o.value)===selectedYear)){let o=document.createElement('option');o.value=selectedYear;o.textContent=selectedYear;ys.appendChild(o)}$('monthSelect').value=selectedMonth;$('yearSelect').value=selectedYear;refresh()}
 function period(m=selectedMonth,y=selectedYear){return state.transactions.filter(t=>{const d=parseDate(t.date);return d&&d.getMonth()===m&&d.getFullYear()===y})}function cat(t){return state.categories.find(c=>c.id===t.categoryId)||{name:t.category||'Outros',color:'#94a3b8',icon:'🏷️'}}function acc(t){return state.accounts.find(a=>a.id===t.accountId)||{name:'Conta principal'}}function dateBR(s){if(!s)return'—';let[y,m,d]=s.split('-');return`${d}/${m}/${y}`}function statusText(t){return t.status==='paid'?(t.type==='income'?'Recebido':'Pago'):(t.type==='income'?'A receber':'A pagar')}function statusBadge(t){let cl=t.status==='paid'?'green':'yellow';if(t.status!=='paid'&&t.dueDate&&parseDate(t.dueDate)<new Date(new Date().setHours(0,0,0,0)))cl='red';return`<span class="badge ${cl}">${statusText(t)}</span>`}
@@ -513,6 +540,65 @@ function renderBudgetPage(){
 function periodItems(month=selectedMonth,year=selectedYear){return state.transactions.filter(t=>{const d=parseDate(t.dueDate||t.date);return d&&d.getMonth()===Number(month)&&d.getFullYear()===Number(year)})}
 window.saveCategoryBudget=async function(id,v){state.categoryBudgets=state.categoryBudgets||{};state.categoryBudgets[id]=Math.max(0,Number(v)||0);await save();renderCategoryBudgets();renderInsights()};
 function renderCategoryBudgets(){if(!$('categoryBudgetList'))return;const a=budgetPeriodItems().filter(t=>t.type==='expense'),cats=state.categories.filter(c=>c.type==='expense'),budgets=state.categoryBudgets||{};$('categoryBudgetList').innerHTML=cats.map(c=>{const spent=a.filter(t=>t.categoryId===c.id).reduce((s,t)=>s+Number(t.amount),0),limit=Number(budgets[c.id]||0),pct=limit?spent/limit*100:0,capped=Math.min(100,pct),color=pct<70?'var(--income)':pct<90?'var(--warning)':'var(--expense)';return`<div class="category-budget-row"><div class="category-budget-head"><div><strong>${c.icon} ${esc(c.name)}</strong><div class="small">${money(spent)} gastos</div></div><input type="number" min="0" step="0.01" value="${limit||''}" placeholder="Limite (R$)" onchange="saveCategoryBudget('${c.id}',this.value)"></div><div class="progress"><div style="width:${capped}%;background:${color}"></div></div><div class="budgetline"><span class="small">${limit?`${pct.toFixed(1)}% utilizado`:'Sem limite definido'}</span><span class="small">${limit?`Disponível: ${money(Math.max(0,limit-spent))}`:''}</span></div></div>`}).join('')}
+
+function renderForecastAndDue(){
+  const container=$('upcomingDueList');
+  if(!container)return;
+
+  const items=periodItems();
+  const today=new Date();
+  today.setHours(0,0,0,0);
+
+  const upcoming=items
+    .filter(t=>t.type==='expense'&&t.status!=='paid'&&t.dueDate)
+    .sort((a,b)=>parseDate(a.dueDate)-parseDate(b.dueDate))
+    .slice(0,6);
+
+  if(!upcoming.length){
+    container.innerHTML='<div class="empty">Nenhum vencimento pendente neste mês.</div>';
+    return;
+  }
+
+  container.innerHTML=upcoming.map(t=>{
+    const due=parseDate(t.dueDate);
+    const diff=Math.ceil((due-today)/86400000);
+
+    let cls='';
+    let label='';
+
+    if(diff<0){
+      cls='overdue';
+      label=`Atrasado há ${Math.abs(diff)} dia${Math.abs(diff)===1?'':'s'}`;
+    }else if(diff===0){
+      cls='overdue';
+      label='Vence hoje';
+    }else if(diff===1){
+      cls='soon';
+      label='Vence amanhã';
+    }else if(diff<=5){
+      cls='soon';
+      label=`Vence em ${diff} dias`;
+    }else{
+      label=`Vence em ${diff} dias`;
+    }
+
+    const c=cat(t);
+
+    return `<div class="due-item">
+      <div>
+        <strong>${esc(t.desc)}</strong>
+        <div class="due-meta">
+          <span>${c.icon} ${esc(c.name)}</span>
+          <span>•</span>
+          <span>${dateBR(t.dueDate)}</span>
+          <span class="${cls}">${label}</span>
+        </div>
+      </div>
+      <div class="due-value expense">${money(t.amount)}</div>
+    </div>`;
+  }).join('');
+}
+
 function renderInsights(){const cur=periodItems();let pm=selectedMonth-1,py=selectedYear;if(pm<0){pm=11;py--}const prev=periodItems(pm,py),expCur=cur.filter(t=>t.type==='expense').reduce((s,t)=>s+Number(t.amount),0),expPrev=prev.filter(t=>t.type==='expense').reduce((s,t)=>s+Number(t.amount),0),payable=cur.filter(t=>t.type==='expense'&&t.status!=='paid').reduce((s,t)=>s+Number(t.amount),0),g={};cur.filter(t=>t.type==='expense').forEach(t=>g[t.categoryId]=(g[t.categoryId]||0)+Number(t.amount));const biggest=Object.entries(g).sort((a,b)=>b[1]-a[1])[0],ins=[];if(expPrev>0){const d=(expCur-expPrev)/expPrev*100;if(Math.abs(d)>=1)ins.push(d>0?`Suas despesas estão ${Math.abs(d).toFixed(1)}% maiores que no mês anterior.`:`Suas despesas estão ${Math.abs(d).toFixed(1)}% menores que no mês anterior.`)}if(biggest){const c=state.categories.find(x=>x.id===biggest[0]),p=expCur?biggest[1]/expCur*100:0;ins.push(`${c?.icon||'🏷️'} ${c?.name||'Outros'} é sua maior categoria de gasto, com ${p.toFixed(1)}% das despesas do mês.`)}if(state.budget>0)ins.push(`Você já utilizou ${(expCur/state.budget*100).toFixed(1)}% do orçamento mensal.`);if(payable>0)ins.push(`Ainda existem ${money(payable)} em contas a pagar neste mês.`);if(!ins.length)ins.push('Ainda não há dados suficientes para gerar comparações úteis.');$('insightsList').innerHTML=ins.map(i=>`<div class="insight-item">${i}</div>`).join('')}
 function getInstallmentGroup(t){if(!t.groupId)return[];return state.transactions.filter(x=>x.groupId===t.groupId&&x.repeatType==='installment').sort((a,b)=>(a.installmentIndex||0)-(b.installmentIndex||0))}
 window.openInstallmentDetails=function(id){const t=state.transactions.find(x=>x.id===id);if(!t)return;const group=getInstallmentGroup(t);if(!group.length)return;const clean=(t.desc||'').replace(/\s*\(\d+\/\d+\)\s*$/,''),total=group.reduce((s,x)=>s+Number(x.amount),0),paid=group.filter(x=>x.status==='paid').length;$('installmentModalTitle').textContent=clean;$('installmentSummary').textContent=`${group.length} parcelas • ${money(total)} no total • ${paid} pagas`;$('installmentList').innerHTML=group.map(x=>`<div class="installment-item"><div class="installment-item-head"><div><strong>Parcela ${x.installmentIndex||'?'} de ${x.installments||group.length}</strong><div class="small">${dateBR(x.dueDate||x.date)} • ${money(x.amount)}</div></div>${statusBadge(x)}</div><div class="action-row" style="margin-top:10px"><button class="icobtnsm" onclick="toggleTxStatus('${x.id}')">Alternar status</button><button class="icobtnsm" onclick="editTransaction('${x.id}');closeModal('installmentModal')">Editar parcela</button></div></div>`).join('');$('installmentModal').classList.add('open')};
