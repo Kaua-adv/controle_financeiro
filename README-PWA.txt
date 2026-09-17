@@ -1,4 +1,4 @@
-MEU CONTROLE FINANCEIRO - PWA
+CONTROLE FINANCEIRO - PWA
 
 COMO PUBLICAR
 1. Use index.html como arquivo principal do site.
@@ -26,3 +26,12 @@ IMPORTANTE
 - PC e celular continuam sincronizados na mesma base.
 - O PWA precisa de HTTPS (ou localhost em testes).
 - A interface básica pode abrir a partir do cache, mas novos dados e sincronização com o Firebase precisam de internet.
+
+
+ATUALIZAÇÃO DO ÍCONE
+Se o app já estava instalado no celular com o ícone antigo, alguns aparelhos mantêm
+o ícone em cache. Depois de publicar esta versão, se o ícone não mudar:
+- remova o app da tela inicial;
+- feche e abra novamente o navegador;
+- acesse o site atualizado;
+- instale o app novamente.

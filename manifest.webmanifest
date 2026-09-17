@@ -1,6 +1,6 @@
 {
-  "name": "Meu Controle Financeiro",
-  "short_name": "Financeiro",
+  "name": "Controle Financeiro",
+  "short_name": "Controle Financeiro",
   "description": "Controle pessoal de receitas, despesas, orçamento, metas e relatórios.",
   "id": "./",
   "start_url": "./",
