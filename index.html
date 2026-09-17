@@ -727,11 +727,22 @@ body.dark{--bg:#07111f;--surface:#0e1b2d;--surface2:#12243a;--text:#eff6ff;--mut
   }
 }
 
+
+#installAppBtn{white-space:nowrap}
 </style>
+
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#1367e8">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Meu Financeiro">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+
 </head>
 <body>
 <div class="app">
-<header class="topbar"><div class="brand"><h1>Meu Controle Financeiro</h1><p>Acompanhe receitas, despesas, metas e orçamento.</p></div><div class="actions"><span id="cloudStatus" class="small">☁️ Conectando...</span><button id="themeBtn" class="iconbtn">🌙</button><button id="moreBtn" class="btn secondary">⋯ Opções</button></div></header>
+<header class="topbar"><div class="brand"><h1>Meu Controle Financeiro</h1><p>Acompanhe receitas, despesas, metas e orçamento.</p></div><div class="actions"><span id="cloudStatus" class="small">☁️ Conectando...</span><button id="installAppBtn" class="btn secondary" type="button" style="display:none">📲 Instalar app</button><button id="themeBtn" class="iconbtn">🌙</button><button id="moreBtn" class="btn secondary">⋯ Opções</button></div></header>
 <nav class="nav"><button class="active" data-view="inicio">🏠 Início</button><button data-view="lancamentos">💳 Lançamentos</button><button data-view="relatorios">📊 Relatórios</button><button data-view="orcamentos">💰 Orçamentos</button><button data-view="categorias">🏷️ Categorias</button><button data-view="metas">🎯 Metas</button></nav>
 <section id="view-inicio" class="view active">
 <div class="periodbar"><div class="row"><strong>Período</strong><button type="button" class="month-nav-btn" id="homePrevMonth" title="Mês anterior" aria-label="Mês anterior">‹</button><select id="monthSelect"></select><select id="yearSelect"></select><button type="button" class="month-nav-btn" id="homeNextMonth" title="Próximo mês" aria-label="Próximo mês">›</button></div><button class="btn" onclick="openTransactionModal()">＋ Novo lançamento</button></div>
@@ -1407,4 +1418,56 @@ $('launchYearFilter').addEventListener('change',e=>{launchYear=e.target.value;tr
 $('launchPrevMonth').addEventListener('click',()=>navigateLaunchMonth(-1));
 $('launchNextMonth').addEventListener('click',()=>navigateLaunchMonth(1));for(let id of['searchInput','filterType','filterCategory','filterStatus'])$(id).addEventListener(id==='searchInput'?'input':'change',transactions);$('themeBtn').onclick=()=>{document.body.classList.toggle('dark');localStorage.setItem('theme',document.body.classList.contains('dark')?'dark':'light');$('themeBtn').textContent=document.body.classList.contains('dark')?'☀️':'🌙'};if(localStorage.getItem('theme')==='dark'){document.body.classList.add('dark');$('themeBtn').textContent='☀️'}$('moreBtn').onclick=()=>{let o=prompt('1 - Exportar backup\n2 - Importar backup');if(o==='1')exportData();else if(o==='2')$('importFile').click()};function exportData(){let b=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=`backup_financas_${ymd(new Date())}.json`;a.click();URL.revokeObjectURL(u)}$('importFile').onchange=e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=async ev=>{try{state={...state,...normalize(JSON.parse(ev.target.result))};await save();refresh();toast('Backup importado.')}catch{alert('Arquivo inválido.')}};r.readAsText(f);e.target.value=''};document.querySelectorAll('.modal').forEach(m=>m.onclick=e=>{if(e.target===m)m.classList.remove('open')});initPeriod();initLaunchPeriod();initReportFilters();initBudgetPeriod();load();
 </script>
+
+<script>
+(function(){
+  let deferredInstallPrompt = null;
+  const installBtn = document.getElementById('installAppBtn');
+  const isStandalone =
+    window.matchMedia('(display-mode: standalone)').matches ||
+    window.navigator.standalone === true;
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function(){
+      navigator.serviceWorker.register('./service-worker.js').catch(function(err){
+        console.error('Falha ao registrar o Service Worker:', err);
+      });
+    });
+  }
+
+  window.addEventListener('beforeinstallprompt', function(event){
+    event.preventDefault();
+    deferredInstallPrompt = event;
+    if (installBtn && !isStandalone) installBtn.style.display = '';
+  });
+
+  window.addEventListener('appinstalled', function(){
+    deferredInstallPrompt = null;
+    if (installBtn) installBtn.style.display = 'none';
+  });
+
+  if (installBtn) {
+    if (isIOS && !isStandalone) installBtn.style.display = '';
+
+    installBtn.addEventListener('click', async function(){
+      if (deferredInstallPrompt) {
+        deferredInstallPrompt.prompt();
+        try { await deferredInstallPrompt.userChoice; } catch(e) {}
+        deferredInstallPrompt = null;
+        installBtn.style.display = 'none';
+        return;
+      }
+
+      if (isIOS) {
+        alert('No iPhone/iPad: abra este site no Safari, toque em Compartilhar e escolha "Adicionar à Tela de Início".');
+        return;
+      }
+
+      alert('Abra o site pelo Chrome ou Edge usando HTTPS. Quando o navegador liberar a instalação, este botão ficará disponível.');
+    });
+  }
+})();
+</script>
+
 </body></html>
