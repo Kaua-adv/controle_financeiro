@@ -7,7 +7,7 @@
 <style>
 :root{--bg:#f5f8fc;--surface:#fff;--surface2:#eef4fb;--text:#10233f;--muted:#6b7c93;--primary:#1367e8;--border:#dbe6f4;--income:#10b981;--expense:#ef4444;--warning:#f59e0b;--shadow:0 10px 30px rgba(16,35,63,.08)}
 body.dark{--bg:#07111f;--surface:#0e1b2d;--surface2:#12243a;--text:#eff6ff;--muted:#91a4bd;--primary:#4d91ff;--border:#203a58;--shadow:0 10px 30px rgba(0,0,0,.28)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Segoe UI,system-ui,sans-serif}button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1500px;margin:auto;padding:24px}.topbar{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap}.brand h1{margin:0;font-size:2rem}.brand p{margin:7px 0;color:var(--muted)}.actions,.periodbar,.filters,.toolbar,.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.btn{border:0;border-radius:10px;padding:11px 15px;font-weight:700;background:var(--primary);color:#fff}.btn.secondary{background:var(--surface);color:var(--text);border:1px solid var(--border)}.btn.danger{background:var(--expense)}.iconbtn{width:42px;height:42px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text)}.nav{margin-top:20px;display:flex;gap:5px;overflow:auto;background:var(--surface);border:1px solid var(--border);padding:7px;border-radius:14px;box-shadow:var(--shadow)}.nav button{border:0;background:transparent;color:var(--muted);padding:11px 16px;border-radius:9px;font-weight:700;white-space:nowrap}.nav button.active{background:var(--surface2);color:var(--primary)}.view{display:none;margin-top:18px}.view.active{display:block}.periodbar{justify-content:space-between;margin-bottom:16px}.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:18px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.stat{display:flex;gap:14px;align-items:center;min-height:112px}.stat .ico{width:52px;height:52px;border-radius:16px;color:white;display:grid;place-items:center;font-size:22px}.stat h3{font-size:.75rem;color:var(--muted);text-transform:uppercase;margin:0 0 6px}.stat strong{font-size:1.5rem}.small{font-size:.82rem;color:var(--muted)}.income{color:var(--income)!important}.expense{color:var(--expense)!important}.warning{color:var(--warning)!important}.dashgrid,.reportsgrid{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;margin-top:16px}.cardhead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:14px}.cardhead h2,.cardhead h3{margin:0;font-size:1.05rem}.chartarea{height:280px}.donutwrap{display:grid;grid-template-columns:200px 1fr;gap:18px;align-items:center}.donut{width:180px;height:180px;border-radius:50%;position:relative;margin:auto;background:var(--surface2)}.donut:after{content:"";position:absolute;inset:34px;background:var(--surface);border-radius:50%}.donutcenter{position:absolute;inset:0;display:grid;place-content:center;text-align:center;z-index:2}.legend{display:flex;flex-direction:column;gap:9px}.legendrow{display:grid;grid-template-columns:12px 1fr auto;gap:9px;align-items:center;font-size:.85rem}.dot{width:10px;height:10px;border-radius:50%}.progress{height:14px;background:var(--surface2);border-radius:99px;overflow:hidden}.progress>div{height:100%;background:var(--income)}.budget{margin-top:16px}.homebottom{display:grid;grid-template-columns:minmax(280px,.7fr) minmax(0,1.6fr);gap:16px;margin-top:16px;align-items:stretch}.homebottom>.card{margin-top:0;height:100%;min-width:0}@media(max-width:1000px){.homebottom{grid-template-columns:1fr}}.budgetline{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:9px 0}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:850px}th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--border)}th{font-size:.72rem;color:var(--muted);text-transform:uppercase}.badge{display:inline-flex;padding:5px 9px;border-radius:99px;font-size:.74rem;font-weight:800}.green{background:#dcfce7;color:#166534}.yellow{background:#fef3c7;color:#92400e}.red{background:#fee2e2;color:#991b1b}.blue{background:#dbeafe;color:#1d4ed8}.toolbar{justify-content:space-between;margin-bottom:14px}.search{min-width:280px}input,select{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:10px;padding:11px;outline:none}.icobtnsm{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;padding:7px 9px}.delete{color:var(--expense)}.accountgrid,.categorygrid,.goalgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.accountcard,.categorycard,.goalcard{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px}.balance{font-size:1.5rem;font-weight:800}.modal{position:fixed;inset:0;background:rgba(2,12,23,.55);display:none;align-items:center;justify-content:center;padding:20px;z-index:1000}.modal.open{display:flex}.modalpanel{width:min(760px,100%);max-height:92vh;overflow:auto;background:var(--surface);border:1px solid var(--border);border-radius:18px}.modalhead{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--border)}.modalbody{padding:20px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.fg{display:flex;flex-direction:column;gap:7px}.fg.full{grid-column:1/-1}.fg label{font-size:.82rem;font-weight:800;color:var(--muted)}.modalfooter{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}.empty{text-align:center;color:var(--muted);padding:25px}.pilltabs{display:flex;background:var(--surface2);padding:4px;border-radius:10px}.pilltabs button{border:0;background:transparent;color:var(--muted);padding:8px 11px;border-radius:8px;font-weight:700}.pilltabs button.active{background:var(--surface);color:var(--primary)}.toast{position:fixed;right:20px;bottom:20px;background:var(--text);color:var(--bg);padding:12px 15px;border-radius:10px;opacity:0;transition:.2s;z-index:2000}.toast.show{opacity:1}.cathead{display:flex;justify-content:space-between;align-items:center}.catname{display:flex;gap:8px;align-items:center;font-weight:800}.catcolor{width:14px;height:14px;border-radius:50%}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Segoe UI,system-ui,sans-serif}button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1500px;margin:auto;padding:24px}.topbar{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;flex-wrap:wrap}.brand h1{margin:0;font-size:2rem}.brand p{margin:7px 0;color:var(--muted)}.actions,.periodbar,.filters,.toolbar,.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.btn{border:0;border-radius:10px;padding:11px 15px;font-weight:700;background:var(--primary);color:#fff}.btn.secondary{background:var(--surface);color:var(--text);border:1px solid var(--border)}.btn.danger{background:var(--expense)}.iconbtn{width:42px;height:42px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text)}.nav{margin-top:20px;display:flex;gap:5px;overflow:auto;background:var(--surface);border:1px solid var(--border);padding:7px;border-radius:14px;box-shadow:var(--shadow)}.nav button{border:0;background:transparent;color:var(--muted);padding:11px 16px;border-radius:9px;font-weight:700;white-space:nowrap}.nav button.active{background:var(--surface2);color:var(--primary)}.view{display:none;margin-top:18px}.view.active{display:block}.periodbar{justify-content:space-between;margin-bottom:16px}.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:18px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.stat{display:flex;gap:14px;align-items:center;min-height:112px}.stat .ico{width:52px;height:52px;border-radius:16px;color:white;display:grid;place-items:center;font-size:22px}.stat h3{font-size:.75rem;color:var(--muted);text-transform:uppercase;margin:0 0 6px}.stat strong{font-size:1.5rem}.small{font-size:.82rem;color:var(--muted)}.income{color:var(--income)!important}.expense{color:var(--expense)!important}.warning{color:var(--warning)!important}.dashgrid,.reportsgrid{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;margin-top:16px}.cardhead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:14px}.cardhead h2,.cardhead h3{margin:0;font-size:1.05rem}.chartarea{height:310px}.donutwrap{display:grid;grid-template-columns:260px minmax(0,1fr);gap:6px;align-items:center;min-height:310px;padding:0 2px 2px}.donut{width:240px;height:240px;border-radius:50%;position:relative;margin:auto;background:var(--surface2)}.donut:after{content:"";position:absolute;inset:46px;background:var(--surface);border-radius:50%}.donutcenter{position:absolute;inset:0;display:grid;place-content:center;text-align:center;z-index:2}.legend{display:flex;flex-direction:column;gap:6px;min-width:0}.legendrow{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:7px;align-items:center;font-size:.85rem}.dot{width:10px;height:10px;border-radius:50%}.progress{height:14px;background:var(--surface2);border-radius:99px;overflow:hidden}.progress>div{height:100%;background:var(--income)}.budget{margin-top:16px}.homebottom{display:grid;grid-template-columns:minmax(280px,.7fr) minmax(0,1.6fr);gap:16px;margin-top:16px;align-items:stretch}.homebottom>.card{margin-top:0;height:100%;min-width:0}@media(max-width:1000px){.homebottom{grid-template-columns:1fr}}.budgetline{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:9px 0}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:850px}th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--border)}th{font-size:.72rem;color:var(--muted);text-transform:uppercase}.badge{display:inline-flex;padding:5px 9px;border-radius:99px;font-size:.74rem;font-weight:800}.green{background:#dcfce7;color:#166534}.yellow{background:#fef3c7;color:#92400e}.red{background:#fee2e2;color:#991b1b}.blue{background:#dbeafe;color:#1d4ed8}.toolbar{justify-content:space-between;margin-bottom:14px}.search{min-width:280px}input,select{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:10px;padding:11px;outline:none}.icobtnsm{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;padding:7px 9px}.delete{color:var(--expense)}.accountgrid,.categorygrid,.goalgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.accountcard,.categorycard,.goalcard{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px}.balance{font-size:1.5rem;font-weight:800}.modal{position:fixed;inset:0;background:rgba(2,12,23,.55);display:none;align-items:center;justify-content:center;padding:20px;z-index:1000}.modal.open{display:flex}.modalpanel{width:min(760px,100%);max-height:92vh;overflow:auto;background:var(--surface);border:1px solid var(--border);border-radius:18px}.modalhead{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--border)}.modalbody{padding:20px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.fg{display:flex;flex-direction:column;gap:7px}.fg.full{grid-column:1/-1}.fg label{font-size:.82rem;font-weight:800;color:var(--muted)}.modalfooter{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}.empty{text-align:center;color:var(--muted);padding:25px}.pilltabs{display:flex;background:var(--surface2);padding:4px;border-radius:10px}.pilltabs button{border:0;background:transparent;color:var(--muted);padding:8px 11px;border-radius:8px;font-weight:700}.pilltabs button.active{background:var(--surface);color:var(--primary)}.toast{position:fixed;right:20px;bottom:20px;background:var(--text);color:var(--bg);padding:12px 15px;border-radius:10px;opacity:0;transition:.2s;z-index:2000}.toast.show{opacity:1}.cathead{display:flex;justify-content:space-between;align-items:center}.catname{display:flex;gap:8px;align-items:center;font-weight:800}.catcolor{width:14px;height:14px;border-radius:50%}
 .launch-period{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .month-nav-btn{
   width:42px;height:42px;padding:0;border-radius:10px;
@@ -30,9 +30,703 @@ body.dark{--bg:#07111f;--surface:#0e1b2d;--surface2:#12243a;--text:#eff6ff;--mut
 .month-empty{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow)}
 .due-overdue{color:var(--expense);font-weight:700}
 .due-soon{color:var(--warning);font-weight:700}
-@media(max-width:1200px){.launch-filter-row{grid-template-columns:1fr 1fr 1fr}.launch-filter-row .launch-period{grid-column:1/-1}.launch-filter-row .search{grid-column:1/-1}}@media(max-width:1050px){.grid4{grid-template-columns:repeat(2,1fr)}.dashgrid,.reportsgrid{grid-template-columns:1fr}.accountgrid,.categorygrid,.goalgrid{grid-template-columns:repeat(2,1fr)}}@media(max-width:700px){.app{padding:14px}.grid4,.accountgrid,.categorygrid,.goalgrid{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.fg.full{grid-column:auto}.donutwrap{grid-template-columns:1fr}.search{min-width:100%;width:100%}}
+@media(max-width:1200px){.launch-filter-row{grid-template-columns:1fr 1fr 1fr}.launch-filter-row .launch-period{grid-column:1/-1}.launch-filter-row .search{grid-column:1/-1}}@media(max-width:1050px){.grid4{grid-template-columns:repeat(2,1fr)}.dashgrid,.reportsgrid{grid-template-columns:1fr}.accountgrid,.categorygrid,.goalgrid{grid-template-columns:repeat(2,1fr)}}@media(max-width:700px){.app{padding:14px}.grid4,.accountgrid,.categorygrid,.goalgrid{grid-template-columns:1fr}.formgrid{grid-template-columns:1fr}.fg.full{grid-column:auto}.donutwrap{grid-template-columns:1fr;min-height:auto}.donut{width:220px;height:220px}.donut:after{inset:42px}.search{min-width:100%;width:100%}}
 
 .kpi-extra-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:16px}.due-list,.insight-list,.recurring-list,.installment-list{display:flex;flex-direction:column;gap:10px}.due-item,.insight-item,.recurring-item,.installment-item{border:1px solid var(--border);background:var(--surface2);border-radius:12px;padding:12px 14px}.due-item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center}.due-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:5px}.due-value{font-weight:800;white-space:nowrap}.overdue{color:var(--expense);font-weight:800}.soon{color:var(--warning);font-weight:800}.category-budget-list{display:flex;flex-direction:column;gap:14px}.category-budget-row{border:1px solid var(--border);border-radius:12px;padding:12px;background:var(--surface2)}.category-budget-head{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px}.category-budget-head input{width:135px;padding:8px 10px}.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.compare-controls{display:flex;align-items:end;gap:10px;flex-wrap:wrap}.compare-controls .fg{min-width:140px}.compare-delta.up{color:var(--expense)}.compare-delta.down{color:var(--income)}.compare-delta.neutral{color:var(--muted)}.recurring-item-head,.installment-item-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.action-row{display:flex;gap:8px;flex-wrap:wrap}.inline-note{padding:10px 12px;border-radius:10px;background:var(--surface2);color:var(--muted);font-size:.82rem}@media(max-width:950px){.kpi-extra-grid,.compare-grid{grid-template-columns:1fr}}
+
+/* ===== Interacoes hover ===== */
+.stat,
+.dashgrid > .card,
+.reportsgrid > .card,
+.homebottom > .card,
+.compare-grid > .card,
+.categorycard,
+.goalcard,
+.category-budget-row,
+.due-item,
+.insight-item,
+.recurring-item,
+.installment-item{
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background-color .22s ease;
+}
+
+@media (hover:hover) and (pointer:fine){
+  .stat:hover{
+    transform:translateY(-4px);
+    border-color:color-mix(in srgb,var(--primary) 32%,var(--border));
+    box-shadow:0 16px 36px rgba(16,35,63,.12);
+  }
+  body.dark .stat:hover{box-shadow:0 16px 36px rgba(0,0,0,.34)}
+
+  .dashgrid > .card:hover,
+  .reportsgrid > .card:hover,
+  .homebottom > .card:hover,
+  .compare-grid > .card:hover{
+    transform:translateY(-3px);
+    border-color:color-mix(in srgb,var(--primary) 24%,var(--border));
+    box-shadow:0 15px 34px rgba(16,35,63,.10);
+  }
+  body.dark .dashgrid > .card:hover,
+  body.dark .reportsgrid > .card:hover,
+  body.dark .homebottom > .card:hover,
+  body.dark .compare-grid > .card:hover{
+    box-shadow:0 15px 34px rgba(0,0,0,.30);
+  }
+
+  .categorycard:hover,
+  .goalcard:hover,
+  .category-budget-row:hover,
+  .due-item:hover,
+  .insight-item:hover,
+  .recurring-item:hover,
+  .installment-item:hover{
+    transform:translateY(-2px);
+    border-color:color-mix(in srgb,var(--primary) 24%,var(--border));
+  }
+
+  table tbody tr{transition:background-color .18s ease}
+  table tbody tr:hover{background:var(--surface2)}
+
+  .legendrow{
+    padding:7px 8px;
+    border-radius:9px;
+    transition:transform .18s ease,background-color .18s ease;
+  }
+  .legendrow:hover{
+    transform:translateX(4px);
+    background:var(--surface2);
+  }
+
+  .donut{
+    transition:transform .25s ease,filter .25s ease;
+    cursor:pointer;
+  }
+  .donut:hover{
+    transform:scale(1.045);
+    filter:drop-shadow(0 10px 14px rgba(16,35,63,.13));
+  }
+  body.dark .donut:hover{filter:drop-shadow(0 10px 14px rgba(0,0,0,.32))}
+.progress > div{transition:width .35s ease,filter .18s ease}
+  .category-budget-row:hover .progress > div,
+  .budget:hover .progress > div{filter:brightness(1.08)}
+
+  .btn,.iconbtn,.icobtnsm,.month-nav-btn,.nav button{
+    transition:transform .16s ease,background-color .16s ease,border-color .16s ease,color .16s ease,box-shadow .16s ease;
+  }
+  .btn:hover,.iconbtn:hover,.icobtnsm:hover,.month-nav-btn:hover{
+    transform:translateY(-1px);
+  }
+}
+
+
+.bar-chart-legend{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:.78rem;color:var(--muted)}
+.bar-chart-legend span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.bar-chart-legend i{width:9px;height:9px;border-radius:3px;display:inline-block}
+#barChart .bar-rect{cursor:pointer;transition:opacity .18s ease,filter .18s ease,transform .18s ease;transform-box:fill-box;transform-origin:center bottom}
+#barChart .bar-rect.current-bar{stroke:var(--primary);stroke-width:2;filter:drop-shadow(0 2px 3px rgba(16,35,63,.12))}
+
+.chartarea:hover #barChart .bar-rect{opacity:.72}
+.chartarea #barChart .bar-rect:hover{opacity:1;filter:brightness(1.08) drop-shadow(0 3px 3px rgba(16,35,63,.18));transform:scaleX(1.08)}
+#barChart .grid-line{transition:opacity .18s ease}
+.chartarea:hover #barChart .grid-line{opacity:.72}
+
+@media (prefers-reduced-motion:reduce){
+  .stat,.card,.categorycard,.goalcard,.category-budget-row,.due-item,.insight-item,.recurring-item,.installment-item,
+  .donut,#barChart .bar-rect,.legendrow,.btn,.iconbtn,.icobtnsm,.month-nav-btn,.nav button{
+    transition:none!important;
+  }
+}
+
+
+/* =========================================================
+   OTIMIZAÇÃO EXCLUSIVA PARA CELULAR
+   Desktop permanece inalterado.
+   ========================================================= */
+@media (max-width:700px){
+
+  html,body{
+    max-width:100%;
+    overflow-x:hidden;
+  }
+
+  body{
+    -webkit-text-size-adjust:100%;
+  }
+
+  .app{
+    width:100%;
+    padding:12px;
+  }
+
+  /* Cabeçalho */
+  .topbar{
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+    gap:10px;
+  }
+
+  .brand{
+    min-width:0;
+  }
+
+  .brand h1{
+    font-size:1.35rem;
+    line-height:1.2;
+  }
+
+  .brand p{
+    font-size:.76rem;
+    margin-top:4px;
+    line-height:1.35;
+  }
+
+  .topbar>.actions{
+    gap:6px;
+    justify-content:flex-end;
+  }
+
+  #cloudStatus{
+    grid-column:1/-1;
+    order:3;
+    width:100%;
+    margin-top:2px;
+  }
+
+  #moreBtn{
+    padding:9px 11px;
+    font-size:0;
+  }
+
+  #moreBtn::after{
+    content:"⋯";
+    font-size:1.25rem;
+    line-height:1;
+  }
+
+  .iconbtn{
+    width:40px;
+    height:40px;
+    flex:none;
+  }
+
+  /* Menu horizontal com navegação por toque */
+  .nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    margin:12px -12px 0;
+    padding:7px 12px;
+    border-left:0;
+    border-right:0;
+    border-radius:0;
+    gap:5px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    flex-wrap:nowrap;
+    scroll-snap-type:x proximity;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    background:var(--surface);
+  }
+
+  .nav::-webkit-scrollbar{
+    display:none;
+  }
+
+  .nav button{
+    flex:0 0 auto;
+    padding:10px 13px;
+    font-size:.82rem;
+    scroll-snap-align:start;
+  }
+
+  /* Conteúdo */
+  .view{
+    margin-top:14px;
+  }
+
+  .periodbar{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch;
+    gap:10px;
+    margin-bottom:12px;
+  }
+
+  .periodbar>.row,
+  .periodbar .launch-period{
+    width:100%;
+  }
+
+  .periodbar>.btn{
+    width:100%;
+  }
+
+  .row{
+    gap:7px;
+  }
+
+  .row>strong{
+    width:100%;
+    font-size:.82rem;
+  }
+
+  .row select{
+    flex:1 1 0;
+    min-width:0;
+  }
+
+  .month-nav-btn{
+    width:42px;
+    height:42px;
+    flex:0 0 42px;
+  }
+
+  /* Cards de resumo: 2 por linha no celular */
+  .grid4{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:9px;
+  }
+
+  .card{
+    padding:14px;
+    border-radius:14px;
+  }
+
+  .stat{
+    min-height:94px;
+    padding:12px;
+    gap:9px;
+    align-items:center;
+  }
+
+  .stat .ico{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    font-size:18px;
+    flex:0 0 40px;
+  }
+
+  .stat h3{
+    font-size:.64rem;
+    margin-bottom:4px;
+  }
+
+  .stat strong{
+    display:block;
+    font-size:1.08rem;
+    line-height:1.2;
+    overflow-wrap:anywhere;
+  }
+
+  .stat .small{
+    display:none;
+  }
+
+  /* Gráficos */
+  .dashgrid,
+  .reportsgrid,
+  .homebottom,
+  .compare-grid,
+  .kpi-extra-grid{
+    grid-template-columns:1fr!important;
+    gap:12px;
+    margin-top:12px;
+  }
+
+  .cardhead{
+    gap:8px;
+    margin-bottom:10px;
+  }
+
+  .cardhead h2,
+  .cardhead h3{
+    font-size:1rem;
+  }
+
+  .chartarea{
+    height:235px;
+    width:100%;
+    overflow:hidden;
+  }
+
+  #barChart{
+    min-width:0;
+  }
+
+  .donutwrap{
+    grid-template-columns:1fr!important;
+    gap:10px;
+    min-height:0;
+    padding:2px 0 0;
+  }
+
+  .donut{
+    width:210px!important;
+    height:210px!important;
+  }
+
+  .donut:after{
+    inset:40px!important;
+  }
+
+  .donutcenter strong{
+    font-size:1rem;
+  }
+
+  .legend{
+    width:100%;
+    gap:5px;
+  }
+
+  .legendrow{
+    grid-template-columns:12px minmax(0,1fr) auto;
+    font-size:.8rem;
+    padding:3px 2px;
+  }
+
+  /* Orçamento e informações */
+  .budgetline{
+    font-size:.84rem;
+  }
+
+  .progress{
+    height:11px;
+  }
+
+  .insight-item,
+  .due-item,
+  .recurring-item,
+  .installment-item,
+  .category-budget-row{
+    padding:11px;
+    border-radius:11px;
+  }
+
+  .due-item{
+    grid-template-columns:1fr;
+    gap:7px;
+  }
+
+  .due-value{
+    justify-self:start;
+  }
+
+  /* Lançamentos: todos os filtros em coluna */
+  .launch-filter-row{
+    display:grid!important;
+    grid-template-columns:1fr!important;
+    gap:8px;
+  }
+
+  .launch-filter-row .launch-period{
+    grid-column:auto!important;
+    display:grid;
+    grid-template-columns:42px minmax(0,1fr) minmax(82px,.65fr) 42px;
+    gap:6px;
+    align-items:center;
+  }
+
+  .launch-filter-row .launch-period>strong{
+    grid-column:1/-1;
+    font-size:.8rem;
+  }
+
+  .launch-filter-row .search{
+    grid-column:auto!important;
+    min-width:0!important;
+    width:100%;
+  }
+
+  .launch-filter-row select,
+  .launch-filter-row input{
+    width:100%;
+    min-width:0;
+  }
+
+  .search{
+    min-width:0!important;
+    width:100%;
+  }
+
+  input,
+  select{
+    min-height:42px;
+    padding:10px;
+    font-size:16px; /* evita zoom automático no iPhone */
+  }
+
+  /* Blocos mensais */
+  .month-group-head{
+    padding:13px;
+    align-items:flex-start;
+  }
+
+  .month-summary{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6px;
+  }
+
+  .month-chip{
+    padding:7px 8px;
+    font-size:.7rem;
+    text-align:center;
+  }
+
+  .month-table{
+    padding:0 0 6px;
+  }
+
+  /* Tabelas: scroll apenas dentro do card, não na página inteira */
+  .tablewrap{
+    width:100%;
+    max-width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:thin;
+    padding-bottom:3px;
+  }
+
+  table{
+    min-width:680px;
+    font-size:.8rem;
+  }
+
+  th,td{
+    padding:10px 8px;
+    white-space:nowrap;
+  }
+
+  th:first-child,
+  td:first-child{
+    position:sticky;
+    left:0;
+    z-index:2;
+    background:var(--surface);
+    min-width:140px;
+    max-width:180px;
+    white-space:normal;
+  }
+
+  th:first-child{
+    z-index:3;
+  }
+
+  /* Relatórios */
+  #view-relatorios .periodbar>div:last-child{
+    width:100%;
+    display:grid!important;
+    grid-template-columns:1fr;
+    gap:8px!important;
+  }
+
+  #view-relatorios .launch-period{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    width:100%;
+    gap:7px;
+  }
+
+  #view-relatorios .launch-period strong{
+    grid-column:1/-1;
+  }
+
+  .pilltabs{
+    width:100%;
+  }
+
+  .pilltabs button{
+    flex:1;
+  }
+
+  .compare-controls{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    align-items:end;
+  }
+
+  .compare-controls .fg{
+    min-width:0;
+  }
+
+  .compare-controls .btn{
+    grid-column:1/-1;
+    width:100%;
+  }
+
+  /* Orçamentos */
+  #view-orcamentos .periodbar .launch-period{
+    display:grid;
+    grid-template-columns:42px minmax(0,1fr) minmax(82px,.65fr) 42px;
+    gap:6px;
+  }
+
+  #view-orcamentos .periodbar .launch-period strong{
+    grid-column:1/-1;
+  }
+
+  .category-budget-head{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+
+  .category-budget-head input{
+    width:100%;
+  }
+
+  /* Categorias e metas */
+  .categorygrid,
+  .goalgrid,
+  .accountgrid{
+    grid-template-columns:1fr!important;
+    gap:9px;
+  }
+
+  .categorycard,
+  .goalcard,
+  .accountcard{
+    padding:13px;
+  }
+
+  /* Modal estilo mobile */
+  .modal{
+    padding:0;
+    align-items:flex-end;
+  }
+
+  .modalpanel{
+    width:100%;
+    max-width:none;
+    max-height:92%;
+    border-radius:18px 18px 0 0;
+    border-left:0;
+    border-right:0;
+    border-bottom:0;
+  }
+
+  .modalhead{
+    padding:15px 14px;
+    position:sticky;
+    top:0;
+    z-index:2;
+    background:var(--surface);
+  }
+
+  .modalbody{
+    padding:14px;
+  }
+
+  .formgrid{
+    grid-template-columns:1fr!important;
+    gap:11px;
+  }
+
+  .fg.full{
+    grid-column:auto!important;
+  }
+
+  .modalfooter{
+    position:sticky;
+    bottom:0;
+    background:var(--surface);
+    padding-top:10px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+
+  .modalfooter .btn{
+    width:100%;
+    padding:12px 8px;
+  }
+
+  /* Ações */
+  .action-row{
+    width:100%;
+  }
+
+  .action-row .icobtnsm{
+    flex:1;
+  }
+
+  .btn{
+    min-height:42px;
+  }
+
+  /* Toast */
+  .toast{
+    left:12px;
+    right:12px;
+    bottom:12px;
+    text-align:center;
+  }
+}
+
+/* Telas muito estreitas */
+@media (max-width:390px){
+  .app{
+    padding:10px;
+  }
+
+  .nav{
+    margin-left:-10px;
+    margin-right:-10px;
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  .brand h1{
+    font-size:1.22rem;
+  }
+
+  .grid4{
+    gap:7px;
+  }
+
+  .stat{
+    padding:10px 8px;
+    gap:7px;
+  }
+
+  .stat .ico{
+    width:35px;
+    height:35px;
+    flex-basis:35px;
+    font-size:16px;
+  }
+
+  .stat strong{
+    font-size:.96rem;
+  }
+
+  .card{
+    padding:12px;
+  }
+
+  .donut{
+    width:190px!important;
+    height:190px!important;
+  }
+
+  .donut:after{
+    inset:36px!important;
+  }
+
+  .compare-controls{
+    grid-template-columns:1fr;
+  }
+
+  .compare-controls .btn{
+    grid-column:auto;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -42,7 +736,7 @@ body.dark{--bg:#07111f;--surface:#0e1b2d;--surface2:#12243a;--text:#eff6ff;--mut
 <section id="view-inicio" class="view active">
 <div class="periodbar"><div class="row"><strong>Período</strong><button type="button" class="month-nav-btn" id="homePrevMonth" title="Mês anterior" aria-label="Mês anterior">‹</button><select id="monthSelect"></select><select id="yearSelect"></select><button type="button" class="month-nav-btn" id="homeNextMonth" title="Próximo mês" aria-label="Próximo mês">›</button></div><button class="btn" onclick="openTransactionModal()">＋ Novo lançamento</button></div>
 <div class="grid4"><div class="card stat"><div class="ico" style="background:var(--income)">↗</div><div><h3>Receitas</h3><strong id="kpiIncome" class="income">R$ 0,00</strong><div class="small">Entradas do período</div></div></div><div class="card stat"><div class="ico" style="background:var(--expense)">↘</div><div><h3>Despesas</h3><strong id="kpiExpense" class="expense">R$ 0,00</strong><div class="small">Saídas do período</div></div></div><div class="card stat"><div class="ico" style="background:var(--warning)">⏱</div><div><h3>Pendente</h3><strong id="kpiPending" class="warning">R$ 0,00</strong><div class="small">A pagar / a receber</div></div></div><div class="card stat"><div class="ico" style="background:var(--primary)">◫</div><div><h3>Saldo</h3><strong id="kpiBalance">R$ 0,00</strong><div class="small">Receitas - despesas</div></div></div></div>
-<div class="dashgrid"><div class="card"><div class="cardhead"><div><h2>Evolução financeira</h2><div class="small">Receitas, despesas e saldo dos últimos 6 meses.</div></div></div><div class="chartarea"><svg id="lineChart" viewBox="0 0 760 280" width="100%" height="100%" preserveAspectRatio="none"></svg></div></div><div class="card"><div class="cardhead"><div><h2>Despesas por categoria</h2><div class="small">Distribuição dos gastos no período.</div></div></div><div class="donutwrap"><div id="donut" class="donut"><div class="donutcenter"><strong id="donutTotal">R$ 0,00</strong><span class="small">Total</span></div></div><div id="categoryLegend" class="legend"></div></div></div></div>
+<div class="dashgrid"><div class="card"><div class="cardhead"><div><h2>Evolução das Despesas</h2><div class="small">Compare seus gastos nos últimos 6 meses.</div></div></div><div class="chartarea"><svg id="barChart" viewBox="0 0 760 310" width="100%" height="100%" preserveAspectRatio="none"></svg></div></div><div class="card"><div class="cardhead"><div><h2>Despesas por categoria</h2><div class="small">Distribuição dos gastos no período.</div></div></div><div class="donutwrap"><div id="donut" class="donut"><div class="donutcenter"><strong id="donutTotal">R$ 0,00</strong><span class="small">Total</span></div></div><div id="categoryLegend" class="legend"></div></div></div></div>
 <div class="homebottom">
   <div class="card budget">
     <div class="cardhead">
@@ -249,9 +943,77 @@ async function load(){
 function initPeriod(){$('monthSelect').innerHTML=months.map((m,i)=>`<option value="${i}">${m}</option>`).join('');let ys=[];for(let y=new Date().getFullYear()-3;y<=new Date().getFullYear()+10;y++)ys.push(y);$('yearSelect').innerHTML=ys.map(y=>`<option>${y}</option>`).join('');$('monthSelect').value=selectedMonth;$('yearSelect').value=selectedYear;$('monthSelect').onchange=()=>{selectedMonth=+$('monthSelect').value;refresh()};$('yearSelect').onchange=()=>{selectedYear=+$('yearSelect').value;refresh()}}
 function navigateHomeMonth(direction){selectedMonth+=direction;if(selectedMonth>11){selectedMonth=0;selectedYear++}else if(selectedMonth<0){selectedMonth=11;selectedYear--}let ys=$('yearSelect');if(![...ys.options].some(o=>Number(o.value)===selectedYear)){let o=document.createElement('option');o.value=selectedYear;o.textContent=selectedYear;ys.appendChild(o)}$('monthSelect').value=selectedMonth;$('yearSelect').value=selectedYear;refresh()}
 function period(m=selectedMonth,y=selectedYear){return state.transactions.filter(t=>{const d=parseDate(t.date);return d&&d.getMonth()===m&&d.getFullYear()===y})}function cat(t){return state.categories.find(c=>c.id===t.categoryId)||{name:t.category||'Outros',color:'#94a3b8',icon:'🏷️'}}function acc(t){return state.accounts.find(a=>a.id===t.accountId)||{name:'Conta principal'}}function dateBR(s){if(!s)return'—';let[y,m,d]=s.split('-');return`${d}/${m}/${y}`}function statusText(t){return t.status==='paid'?(t.type==='income'?'Recebido':'Pago'):(t.type==='income'?'A receber':'A pagar')}function statusBadge(t){let cl=t.status==='paid'?'green':'yellow';if(t.status!=='paid'&&t.dueDate&&parseDate(t.dueDate)<new Date(new Date().setHours(0,0,0,0)))cl='red';return`<span class="badge ${cl}">${statusText(t)}</span>`}
-function dashboard(){let a=period(),inc=a.filter(t=>t.type==='income').reduce((s,t)=>s+Number(t.amount),0),exp=a.filter(t=>t.type==='expense').reduce((s,t)=>s+Number(t.amount),0),pend=a.filter(t=>t.status!=='paid').reduce((s,t)=>s+Number(t.amount),0),bal=inc-exp;$('kpiIncome').textContent=money(inc);$('kpiExpense').textContent=money(exp);$('kpiPending').textContent=money(pend);$('kpiBalance').textContent=money(bal);$('kpiBalance').style.color=bal<0?'var(--expense)':'var(--primary)';lineChart();donut(a);budget(exp);let r=[...a].sort((x,y)=>new Date(y.date)-new Date(x.date)).slice(0,5);$('recentTable').innerHTML=r.length?r.map(t=>`<tr><td><strong>${esc(t.desc)}</strong></td><td>${cat(t).icon} ${esc(cat(t).name)}</td><td>${dateBR(t.date)}</td><td class="${t.type==='income'?'income':'expense'}"><strong>${t.type==='income'?'+':'-'} ${money(t.amount)}</strong></td><td>${statusBadge(t)}</td></tr>`).join(''):`<tr><td colspan="5" class="empty">Nenhuma movimentação.</td></tr>`}
-function lineChart(){let pts=[];for(let i=5;i>=0;i--){let m=selectedMonth-i,y=selectedYear;while(m<0){m+=12;y--}let a=period(m,y),inc=a.filter(t=>t.type==='income').reduce((s,t)=>s+Number(t.amount),0),exp=a.filter(t=>t.type==='expense').reduce((s,t)=>s+Number(t.amount),0);pts.push({m,inc,exp,bal:inc-exp})}let W=760,H=280,P=42,max=Math.max(1,...pts.flatMap(p=>[p.inc,p.exp,Math.abs(p.bal)])),x=i=>P+i*((W-P*2)/(pts.length-1)),y=v=>H-P-(Math.max(0,v)/max)*(H-P*2),h='';for(let i=0;i<5;i++){let gy=P+i*((H-P*2)/4);h+=`<line x1="${P}" y1="${gy}" x2="${W-P}" y2="${gy}" stroke="var(--border)"/>`}for(let[key,color]of[['inc','var(--income)'],['exp','var(--expense)'],['bal','var(--primary)']])h+=`<polyline fill="none" stroke="${color}" stroke-width="4" points="${pts.map((p,i)=>`${x(i)},${y(p[key])}`).join(' ')}"/>`;pts.forEach((p,i)=>{h+=`<text x="${x(i)}" y="268" text-anchor="middle" font-size="12" fill="var(--muted)">${months[p.m].slice(0,3)}</text>`});$('lineChart').innerHTML=h}
-function donut(a){let g={},total=0;a.filter(t=>t.type==='expense').forEach(t=>{g[t.categoryId]=(g[t.categoryId]||0)+Number(t.amount);total+=Number(t.amount)});$('donutTotal').textContent=money(total);if(!total){$('donut').style.background='var(--surface2)';$('categoryLegend').innerHTML='<div class="empty">Sem despesas.</div>';return}let start=0,parts=[],rows=[];Object.entries(g).sort((a,b)=>b[1]-a[1]).forEach(([id,v])=>{let c=state.categories.find(x=>x.id===id)||{name:'Outros',color:'#94a3b8',icon:'🏷️'},p=v/total*100;parts.push(`${c.color} ${start}% ${start+p}%`);start+=p;rows.push(`<div class="legendrow"><span class="dot" style="background:${c.color}"></span><span>${c.icon} ${esc(c.name)}</span><strong>${p.toFixed(1)}%</strong></div>`)});$('donut').style.background=`conic-gradient(${parts.join(',')})`;$('categoryLegend').innerHTML=rows.join('')}
+function dashboard(){let a=period(),inc=a.filter(t=>t.type==='income').reduce((s,t)=>s+Number(t.amount),0),exp=a.filter(t=>t.type==='expense').reduce((s,t)=>s+Number(t.amount),0),pend=a.filter(t=>t.status!=='paid').reduce((s,t)=>s+Number(t.amount),0),bal=inc-exp;$('kpiIncome').textContent=money(inc);$('kpiExpense').textContent=money(exp);$('kpiPending').textContent=money(pend);$('kpiBalance').textContent=money(bal);$('kpiBalance').style.color=bal<0?'var(--expense)':'var(--primary)';barChart();donut(a);budget(exp);let r=[...a].sort((x,y)=>new Date(y.date)-new Date(x.date)).slice(0,5);$('recentTable').innerHTML=r.length?r.map(t=>`<tr><td><strong>${esc(t.desc)}</strong></td><td>${cat(t).icon} ${esc(cat(t).name)}</td><td>${dateBR(t.date)}</td><td class="${t.type==='income'?'income':'expense'}"><strong>${t.type==='income'?'+':'-'} ${money(t.amount)}</strong></td><td>${statusBadge(t)}</td></tr>`).join(''):`<tr><td colspan="5" class="empty">Nenhuma movimentação.</td></tr>`}
+function barChart(){
+  let pts=[];
+
+  for(let i=5;i>=0;i--){
+    let m=selectedMonth-i,y=selectedYear;
+    while(m<0){m+=12;y--}
+
+    const a=period(m,y);
+    const exp=a
+      .filter(t=>t.type==='expense')
+      .reduce((s,t)=>s+Number(t.amount),0);
+
+    pts.push({m,y,exp});
+  }
+
+  const W=760,H=310,PL=62,PR=20,PT=18,PB=42;
+  const maxExpense=Math.max(1,...pts.map(p=>p.exp));
+
+  // Folga no topo para as barras não encostarem no limite do gráfico.
+  const max=maxExpense*1.12;
+  const plotW=W-PL-PR;
+  const plotH=H-PT-PB;
+
+  const y=v=>PT+((max-v)/max)*plotH;
+  const zeroY=H-PB;
+
+  const short=v=>{
+    const av=Math.abs(v);
+    if(av>=1000000)return 'R$ '+(v/1000000).toFixed(1).replace('.',',')+' mi';
+    if(av>=1000)return 'R$ '+(v/1000).toFixed(av>=10000?0:1).replace('.',',')+' mil';
+    return 'R$ '+Math.round(v);
+  };
+
+  let h='';
+
+  // Linhas de grade + escala.
+  for(let i=0;i<5;i++){
+    const val=max*(1-i/4);
+    const gy=y(val);
+    h+=`<line class="grid-line" x1="${PL}" y1="${gy}" x2="${W-PR}" y2="${gy}" stroke="var(--border)"/>`;
+    h+=`<text x="${PL-9}" y="${gy+4}" text-anchor="end" font-size="11" fill="var(--muted)">${short(val)}</text>`;
+  }
+
+  h+=`<line x1="${PL}" y1="${zeroY}" x2="${W-PR}" y2="${zeroY}" stroke="var(--muted)" stroke-width="1.2" opacity=".65"/>`;
+
+  const step=plotW/pts.length;
+  const barW=Math.min(68,step*.52);
+
+  pts.forEach((p,i)=>{
+    const center=PL+step*(i+.5);
+    const yy=y(p.exp);
+    const height=Math.max(2,zeroY-yy);
+    const x=center-barW/2;
+    const isSelected=p.m===selectedMonth && p.y===selectedYear;
+
+    h+=`<rect class="bar-rect${isSelected?' current-bar':''}" x="${x}" y="${yy}" width="${barW}" height="${height}" rx="7" fill="var(--expense)">
+      <title>${months[p.m]} ${p.y}: ${money(p.exp)}</title>
+    </rect>`;
+
+    // Valor acima da barra, quando houver gasto.
+    if(p.exp>0){
+      h+=`<text x="${center}" y="${Math.max(14,yy-7)}" text-anchor="middle" font-size="11" font-weight="700" fill="var(--expense)">${short(p.exp)}</text>`;
+    }
+
+    h+=`<text x="${center}" y="${H-13}" text-anchor="middle" font-size="12" ${isSelected?'font-weight="700" fill="var(--primary)"':'fill="var(--muted)"'}>${months[p.m].slice(0,3)}</text>`;
+  });
+
+  $('barChart').innerHTML=h;
+}
+function donut(a){let g={},total=0;a.filter(t=>t.type==='expense').forEach(t=>{g[t.categoryId]=(g[t.categoryId]||0)+Number(t.amount);total+=Number(t.amount)});$('donutTotal').textContent=money(total);if(!total){$('donut').style.background='var(--surface2)';$('categoryLegend').innerHTML='<div class="empty">Sem despesas.</div>';return}let start=0,parts=[],rows=[];Object.entries(g).sort((a,b)=>b[1]-a[1]).forEach(([id,v])=>{let c=state.categories.find(x=>x.id===id)||{name:'Outros',color:'#94a3b8',icon:'🏷️'},p=v/total*100;parts.push(`${c.color} ${start}% ${start+p}%`);start+=p;rows.push(`<div class="legendrow"><span class="dot" style="background:${c.color}"></span><span>${c.icon} ${esc(c.name)}</span><strong>${money(v)} · ${p.toFixed(1)}%</strong></div>`)});$('donut').style.background=`conic-gradient(${parts.join(',')})`;$('categoryLegend').innerHTML=rows.join('')}
 function budget(exp){if(!$('budgetMainText'))return;let l=Number(state.budget||0),p=l?exp/l*100:0;$('budgetMainText').textContent=`${money(exp)} de ${money(l)}`;$('budgetPercent').textContent=l?`${p.toFixed(1)}% utilizado`:'Defina um limite';$('budgetBar').style.width=Math.min(100,p)+'%';$('budgetBar').style.background=p<70?'var(--income)':p<90?'var(--warning)':'var(--expense)';$('budgetAvailable').textContent=`Disponível: ${money(Math.max(0,l-exp))}`;$('budgetMessage').textContent=l&&exp>l?`Limite ultrapassado em ${money(exp-l)}`:''}
 function updateFilters(){let c=$('filterCategory').value||'all';$('filterCategory').innerHTML='<option value="all">Todas as categorias</option>'+state.categories.map(x=>`<option value="${x.id}">${x.name}</option>`).join('');$('filterCategory').value=[...$('filterCategory').options].some(o=>o.value===c)?c:'all'}
 
