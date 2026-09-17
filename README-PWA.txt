@@ -35,3 +35,7 @@ o ícone em cache. Depois de publicar esta versão, se o ícone não mudar:
 - feche e abra novamente o navegador;
 - acesse o site atualizado;
 - instale o app novamente.
+
+
+VERSÃO DOS ÍCONES
+Esta versão atualiza todos os ícones com um cifrão visível e altera o cache para v3.
